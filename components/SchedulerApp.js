@@ -79,11 +79,16 @@ export default function SchedulerApp() {
                 <td><input type="number" value={task.duration} onChange={e => updateTask(task.id, 'duration', e.target.value)} /></td>
                 <td>{task.endDate}</td>
                 <td>
-                  <select value={task.assignedTo} onChange={e => {
-                    const selected = crewList.find(c => c.name === e.target.value);
-                    updateTask(task.id, 'assignedTo', selected.name);
-                    updateTask(task.id, 'email', selected.email);
-                  }}>
+               <select value={task.assignedTo} onChange={e => {
+  const crewName = e.target.value;
+  const selected = crewList.find(c => c.name === crewName);
+  updateTask(task.id, 'assignedTo', crewName);
+  updateTask(task.id, 'email', selected?.email || '');
+}}>
+  {crewList.map(c => (
+    <option key={c.name} value={c.name}>{c.name}</option>
+  ))}
+</select>
                     {crewList.map(c => (
                       <option key={c.name} value={c.name}>{c.name}</option>
                     ))}
