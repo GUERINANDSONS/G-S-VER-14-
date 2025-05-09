@@ -73,28 +73,27 @@ export default function SchedulerApp() {
           </thead>
           <tbody>
             {projects[projectId].map(task => (
-              <tr key={task.id}>
-                <td>{task.phase}</td>
-                <td><input type="date" value={task.startDate} onChange={e => updateTask(task.id, 'startDate', e.target.value)} /></td>
-                <td><input type="number" value={task.duration} onChange={e => updateTask(task.id, 'duration', e.target.value)} /></td>
-                <td>{task.endDate}</td>
-                <td>
-               <select value={task.assignedTo} onChange={e => {
-  const crewName = e.target.value;
-  const selected = crewList.find(c => c.name === crewName);
-  updateTask(task.id, 'assignedTo', crewName);
-  updateTask(task.id, 'email', selected?.email || '');
-}}>
-  {crewList.map(c => (
-    <option key={c.name} value={c.name}>{c.name}</option>
-  ))}
-</select>
-
-                    {crewList.map(c => (
-                      <option key={c.name} value={c.name}>{c.name}</option>
-                    ))}
-                  </select>
-                </td>
+        <tr key={task.id}>
+  <td>{task.phase}</td>
+  <td>
+    <input type="date" value={task.startDate} onChange={e => updateTask(task.id, 'startDate', e.target.value)} />
+  </td>
+  <td>
+    <input type="number" value={task.duration} onChange={e => updateTask(task.id, 'duration', e.target.value)} />
+  </td>
+  <td>{task.endDate}</td>
+  <td>
+    <select value={task.assignedTo} onChange={e => {
+      const crewName = e.target.value;
+      const selected = crewList.find(c => c.name === crewName);
+      updateTask(task.id, 'assignedTo', crewName);
+      updateTask(task.id, 'email', selected?.email || '');
+    }}>
+      {crewList.map(c => (
+        <option key={c.name} value={c.name}>{c.name}</option>
+      ))}
+    </select>
+  </td>
               </tr>
             ))}
           </tbody>
