@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { format, addDays } from 'date-fns';
 
 const crewList = [
-  { name: "Crew A", email: "a@example.com" },
+  { name: "WILLY", email: "CHRIS@GUERINANDSONS.COM" },
   { name: "Crew B", email: "b@example.com" },
-  { name: "Sub - Electrical", email: "elec@example.com" },
+  { name: "BRENDHORST", email: "elec@example.com" },
   { name: "Sub - Plumbing", email: "plumb@example.com" }
 ];
 
